@@ -39,54 +39,53 @@ class SeconView extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               childCount: 1,
               (context, index) => Container(
-                // color: Colors.white,
                 width: double.infinity,
                 child: Column(
                   children: [
                     Infos(
-                        title: model.users[index]["username"],
+                        title: model.users[currentIndex]["username"],
                         subtitle: "Username",
                         icon: Icons.person),
                     Divider(),
                     Infos(
-                      title: model.users[index]["phone"],
+                      title: model.users[currentIndex]["phone"],
                       subtitle: "Mobile",
                       icon: Icons.phone,
                     ),
                     Divider(),
                     Infos(
-                      title: model.users[index]["email"],
+                      title: model.users[currentIndex]["email"],
                       icon: Icons.mail,
                       subtitle: "Mail",
                     ),
                     Divider(),
                     Infos(
-                      title: model.users[index]["website"],
+                      title: model.users[currentIndex]["website"],
                       icon: Icons.language,
                       subtitle: "Website",
                     ),
                     Divider(),
                     Infos(
-                        title: model.users[index]["address"]["city"],
+                        title: model.users[currentIndex]["address"]["city"],
                         subtitle: "City",
                         icon: Icons.location_on),
                     Divider(),
                     Infos(
                       title:
-                          "${model.users[index]["address"]['street']} , ${model.users[index]["address"]["suite"]}",
+                          "${model.users[currentIndex]["address"]['street']} , ${model.users[currentIndex]["address"]["suite"]}",
                       icon: Icons.map,
                       subtitle: "Adress",
                     ),
                     Divider(),
                     Infos(
-                      title: model.users[index]["company"]["name"],
+                      title: model.users[currentIndex]["company"]["name"],
                       icon: Icons.work,
                       subtitle: "Company",
                     ),
                     Divider(),
                     Infos(
                         title:
-                            " \"${model.users[index]["company"]["catchPhrase"]}\"",
+                            " \"${model.users[currentIndex]["company"]["catchPhrase"]}\"",
                         subtitle: "CatchPhrase",
                         icon: Icons.record_voice_over),
                     Divider(),

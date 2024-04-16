@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homework_users/domain/provider/users_provider.dart';
+import 'package:homework_users/router/app_routes.dart';
 import 'package:homework_users/views/info_view.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class HomeView extends StatelessWidget {
         ),
         body: ListView.separated(
             itemBuilder: (context, index) => PersonList(
-                  index: index,
+                  indexx: index,
                   photoName: model.userPhotos[index],
                   name: model.users[index]["name"].toString(),
                   userName: model.users[index]["username"].toString(),
@@ -33,13 +34,13 @@ class HomeView extends StatelessWidget {
 }
 
 class PersonList extends StatelessWidget {
-  final int index;
+  final int indexx;
   final String name;
   final String userName;
   final String photoName;
   const PersonList({
     super.key,
-    required this.index,
+    required this.indexx,
     required this.name,
     required this.userName,
     required this.photoName,
@@ -48,34 +49,43 @@ class PersonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<UserProvider>(context);
-    return ListTile(
-      title: Text(
-        name,
-        style: const TextStyle(
-            color: Colors.blueGrey, fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-      subtitle: Text(
-        userName,
-        style: const TextStyle(fontSize: 12, color: Colors.black54),
-      ),
-      leading: CircleAvatar(
-        backgroundImage: AssetImage("images/$photoName"),
-      ),
-      trailing: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.grey,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(4)))),
-        child: const Text("More"),
-        onPressed: () {
-          print(model.userPhotos[index]);
-          showModalBottomSheet(
-              backgroundColor: Colors.transparent,
-              isScrollControlled: true,
-              context: context,
-              builder: (context) => FullInfo(index: index));
-        },
+    return GestureDetector(
+      onTap: () {
+        model.currentIndex = indexx;
+        Navigator.of(context).pushNamed(AppRoutes.info);
+      },
+      child: ListTile(
+        title: Text(
+          name,
+          style: const TextStyle(
+              color: Colors.blueGrey,
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(
+          userName,
+          style: const TextStyle(fontSize: 12, color: Colors.black54),
+        ),
+        leading: CircleAvatar(
+          backgroundImage: AssetImage("images/$photoName"),
+        ),
+        /*
+        trailing: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.grey,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(4)))),
+          child: const Text("More"),
+          onPressed: () {
+            print(model.userPhotos[indexx]);
+            showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                isScrollControlled: true,
+                context: context,
+                builder: (context) => FullInfo(index: indexx));
+          },
+        ), */
       ),
     );
   }

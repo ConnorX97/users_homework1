@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 final class UserProvider extends ChangeNotifier {
+  
+  int currentIndex = 0;
+
   List userPhotos = [
     "1.jpg",
     "2.jpg",

@@ -12,7 +12,6 @@ class FullInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = Provider.of<UserProvider>(context);
     return Container(
-      //color: Colors.white,
       width: double.infinity,
       height: 620,
       child: Column(

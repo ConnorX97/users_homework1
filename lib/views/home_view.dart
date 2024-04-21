@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homework_users/domain/provider/users_provider.dart';
 import 'package:homework_users/router/app_routes.dart';
-import 'package:homework_users/views/info_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
@@ -69,23 +68,6 @@ class PersonList extends StatelessWidget {
         leading: CircleAvatar(
           backgroundImage: AssetImage("images/$photoName"),
         ),
-        /*
-        trailing: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor: Colors.grey,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4)))),
-          child: const Text("More"),
-          onPressed: () {
-            print(model.userPhotos[indexx]);
-            showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                isScrollControlled: true,
-                context: context,
-                builder: (context) => FullInfo(index: indexx));
-          },
-        ), */
       ),
     );
   }
